@@ -16,25 +16,19 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+    - name: Create .env file
+      run: |
+        echo "${{ secrets.DOT_ENV_FILE }}" > .env
 
     - name: Build Docker image
       run: docker build -t 3o3 .
 
     - name: Run
-      env:
-        MAIN_URL: ${{ secrets.MAIN_URL }}
-        LOGIN_ID: ${{ secrets.ID }}
-        LOGIN_PW: ${{ secrets.PASSWORD }}
-        CI: "true"
       run: |
         docker run --rm \
-          -e MAIN_URL=$MAIN_URL \
-          -e ID=$LOGIN_ID \
-          -e PASSWORD=$LOGIN_PW \
-          -e CI=$CI \
+          -e CI="true" \
           -v ${{ github.workspace }}/allure-results:/app/allure-results \
           3o3
-
 
     - name: Get Allure
       uses: actions/checkout@v3
