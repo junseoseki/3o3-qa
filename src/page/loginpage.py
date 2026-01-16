@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class loginpage(basepage):
-    def __init__(self, page, timeout=5000):
+    def __init__(self, page, timeout=9000):
         super().__init__(page, timeout)
     
     def try_login(self):
