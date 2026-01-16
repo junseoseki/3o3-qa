@@ -1,4 +1,3 @@
-
 class login_locator:
     kakao_login_button = "role=button[name=/지금 환급금 찾기|카카오 계정으로 계속하기/]"
     id_input = "input[name='loginId']"
