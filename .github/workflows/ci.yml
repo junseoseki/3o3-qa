@@ -31,7 +31,7 @@ jobs:
         docker run --rm \
           -e CI="true" \
           -v ${{ github.workspace }}/allure-results:/app/allure-results \
-          3o3
+          3o3 /bin/bash -c "python generate_auth.py && pytest"
 
     - name: Fix permissions
       if: always()
