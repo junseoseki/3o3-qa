@@ -47,7 +47,7 @@ jobs:
 
     - name: Disable Jekyll
       if: always()
-      run: touch allure-history/.nojekyll
+      run: sudo touch allure-history/.nojekyll
 
     - name: Deploy report to Github Pages
       if: always()
