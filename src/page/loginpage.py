@@ -13,10 +13,13 @@ class loginpage(basepage):
     def try_login(self):
         # Check if already logged in (Session Reuse)
         try:
-            self.page.wait_for_url("**/app.3o3.co.kr/**", timeout=3000)
+            # Wait for a URL that indicates we are INSIDE the app (not on login page)
+            # Based on debug logs, succesful login goes to /payment/...
+            self.page.wait_for_url("**/payment/**", timeout=3000)
             logging.info("Already logged in (Session Reused). Skipping login steps.")
             return
         except:
+            logging.info("Not detected as logged in. Proceeding with login flow.")
             pass # Not logged in, proceed with login flow
 
         self._get_locator(login_locator.kakao_login_button).click()

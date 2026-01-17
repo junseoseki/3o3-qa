@@ -30,7 +30,12 @@ def page():
         
         # Helper to load state if exists
         state_path = ".auth/state.json"
-        storage_state = state_path if os.path.exists(state_path) else None
+        if os.path.exists(state_path):
+            print(f"LOADING STORAGE STATE FROM: {state_path}")
+            storage_state = state_path
+        else:
+            print("NO STORAGE STATE FILE FOUND.")
+            storage_state = None
         
         context = browser.new_context(
             user_agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
