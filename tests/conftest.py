@@ -16,7 +16,11 @@ def page():
             browser = p.chromium.launch(headless=True)
         else:
             browser = p.chromium.launch(headless=False, channel="chrome")
-        context = browser.new_context()
+        context = browser.new_context(
+            user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            locale="ko-KR",
+            viewport={"width": 1920, "height": 1080}
+        )
         page = context.new_page()
         page.goto(os.getenv("MAIN_URL"))
         yield page
