@@ -13,14 +13,23 @@ def page():
         is_docker = os.path.exists("/.dockerenv")
         
         if is_ci or is_docker:
-            browser = p.chromium.launch(headless=True)
+            # Add anti-detection args
+            browser = p.chromium.launch(
+                headless=True,
+                args=["--disable-blink-features=AutomationControlled"]
+            )
         else:
             browser = p.chromium.launch(headless=False, channel="chrome")
+        
         context = browser.new_context(
-            user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            user_agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
             locale="ko-KR",
             viewport={"width": 1920, "height": 1080}
         )
+        
+        # Hide the webdriver property
+        context.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+        
         page = context.new_page()
         page.goto(os.getenv("MAIN_URL"))
         yield page
