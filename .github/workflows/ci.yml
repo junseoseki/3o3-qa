@@ -4,11 +4,6 @@ on:
   push:
     branches: [main]
 
-permissions:
-  contents: write
-  pages: write
-  id-token: write
-
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -31,20 +26,8 @@ jobs:
         docker run --rm \
           -e CI="true" \
           -v ${{ github.workspace }}/allure-results:/app/allure-results \
-          3o3 /bin/bash -c "python generate_auth.py && pytest"
-
-    - name: Fix permissions
-      if: always()
-      run: sudo chown -R $USER:$USER allure-results
-
-    - name: Get Allure
-      uses: actions/checkout@v3
-      if: always()
-      continue-on-error: true
-      with:
-        ref: gh-pages
-        path: gh-pages
-
+          3o3 
+      
     - name: Allure Report action
       uses: simple-elf/allure-report-action@master
       if: always()
@@ -60,4 +43,3 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: gh-pages
         publish_dir: allure-history
-        force_orphan: true
