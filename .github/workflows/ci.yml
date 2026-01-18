@@ -49,10 +49,11 @@ jobs:
       if: always()
       run: sudo touch allure-history/.nojekyll
 
-    - name: Copy latest to root
+    - name: Debug allure-results
       if: always()
       run: |
-        sudo cp -r allure-history/latest/* allure-history/
+        echo "==== allure-results ===="
+        ls -al allure-results
 
     - name: Deploy report to Github Pages
       if: always()
