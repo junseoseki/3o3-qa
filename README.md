@@ -47,7 +47,7 @@
 
 ### 방법 : Docker로 실행하기
 
-1.  **필수 조건**: Docker Desktop 설치
+1.  **필수 조건**: Docker Desktop 설치, .env 파일 생성 -> zip 파일 안 env.text 파일에 있는 내용 복붙
 2.  **실행 명령어**:
     ```bash
     # 1. Docker 이미지 빌드
