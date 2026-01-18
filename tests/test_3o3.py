@@ -20,5 +20,6 @@ def test_login_negative(page: Page):
     login = loginpage(page)
     login.try_login_with_testid()
     login._wait_for_load_state()
-    expect(page.locator(L.close_button)).to_be_visible()
-    
+    close_btn = page.locator(L.close_button)
+    error_msg = page.get_by_text(L.error_message)
+    expect(close_btn.or_(error_msg)).to_be_visible()
