@@ -25,8 +25,7 @@ jobs:
 
     - name: Run tests
       run: |
-        docker run --rm \
-          -e CI="true" \
+        docker run \
           -v ${{ github.workspace }}/allure-results:/app/allure-results \
           3o3 
       
