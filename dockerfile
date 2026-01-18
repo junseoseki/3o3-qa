@@ -12,4 +12,4 @@ ENV LC_ALL ko_KR.UTF-8
 
 COPY . .
 
-CMD ["pytest", "--alluredir=allure-results"]
+CMD ["pytest", "-s","--alluredir=/app/allure-results"]
