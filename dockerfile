@@ -12,4 +12,4 @@ ENV LC_ALL ko_KR.UTF-8
 
 COPY . .
 
-CMD ["pytest", "-s", "--alluredir=/app/allure-results", "--browser", "chromium", "--browser", "firefox", "--browser", "webkit"]
+CMD ["pytest", "-s", "-n", "3", "--alluredir=/app/allure-results", "--browser", "chromium", "--browser", "firefox", "--browser", "webkit"]
