@@ -86,7 +86,7 @@
 1.  **Build**: Docker 이미지를 빌드하여 테스트 환경 준비
 2.  **Test**: Docker 컨테이너 내부에서 pytest 실행 (Chromium, Firefox, Webkit)
 3.  **Reporting**: Allure Report 생성 및 **GitHub Pages**에 배포
-4.  **Notification**: 테스트 성공/실패 여부를 **Slack Webhook**으로 전송
+4.  **Notification**: 테스트 성공/실패 여부를 **Slack Webhook**으로 전송 --> https://join.slack.com/t/3o3hq/shared_invite/zt-3nlwnam6r-dt6yjOhb61BH0QbXAW2NAQ **slack link**
 
 ### 📊 테스트 결과 리포트 확인
 *   **URL**: `https://junseoseki.github.io/3o3/`
